@@ -1,21 +1,37 @@
-<h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+
+</head>
+<body>
+  <h1>
   Welcome to {{ mainTitle }}'s SPA!
 </h1>
 
 <!--To build the user interface.-->
-<input type="text" (keyup)="onNameKeyUp($event)">
+<!-- <input type="text" (keyup)="onNameKeyUp($event)"> -->
 <!--Event is the input element, Keyup means whenever I am typing it will do something-->
-<button (click)="getPhotos()">Get Profile</button>
+<!-- <button (click)="getPhotos()">Get Profile</button> -->
 <!--Implement the getProfile in component.ts -->
 
-<div class="optionButtons">
+<!-- <div class="optionButtons">
 <button (click)="changeLimit(5000)">Get All</button>
 <button (click)="changeLimit(50)">Limit 50</button>
 <button (click)="changeLimit(100)">Limit 100</button>
 <button (click)="changeLimit(1000)">Limit 1000</button>
-</div>
+</div> -->
 
-<table>
+<!-- <table>
   <tr>
     <th>ID</th>
     <th>Album</th>
@@ -34,23 +50,32 @@
       <img height="40" src="{{photo.url}}" />
     </td>
   </tr>
-</table>
+</table>  -->
 
-<!-- </div>  -->
 
-<!-- <table>
-  <tr *ngFor="let photo of photos">
+<table id="myTable"> 
+  <thead>
     <th>ID</th>
     <th>Album</th>
     <th>Title</th>
     <th>Url</th>
     <th>ThumbnailUrl</th>
-  </tr>
-  <tr>
-    <td>{{photo.id}}</td>
-    <td>{{photo.albumId}}</td>
-    <td>{{photo.title}}</td>
-    <td>{{photo.url}}</td>
-    <td>{{photo.thumbnailUrl}}</td>
-  </tr>
-</table> -->
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+

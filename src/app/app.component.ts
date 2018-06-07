@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http'; // step 2 add to main compone
 import { LNodeType } from '@angular/core/src/render3/interfaces/node';
 import { OnInit } from '@angular/core';
 
+import { DataService } from './services/data.service';
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,49 +23,70 @@ export class AppComponent implements OnInit {
   photos: any[];
   allPhotos: any[];
   limit: number;
-  constructor(private httpClient: HttpClient) { }// Create a class
+  //constructor(private httpClient: HttpClient) { }// Create a class
+  DataArray: any[];
 
-
-  onNameKeyUp(event: any) {
-    this.id = event.target.value;
-    console.log(event.target.value);
-    this.found = true; // data will be false whilst typing
+  constructor(public data: DataService) {
+    this.LoadTableData();
+    $(function () {
+      $('#myTable').DataTable();
+    });
   }
 
-  // Http Get Method
-  getPhotos() {
-    // this is where it is going to do the Http GET
-    this.httpClient.get(`https://jsonplaceholder.typicode.com/photos/?id=${this.id}`) // queries the URL by ID, the base address for api
+  ngOnInit(): void {
 
-      .subscribe( // it subscribes to the URL, keeps watching it until it gets it and executes it
-        (data: any[]) => { // retrieves the object we call data from inside the URL
-          console.log(data);
-          if (data.length) { // if it returns some data
-            this.photos = data;
-          }
-        }
-      );
+  }
+  LoadTableData() {
+    this.data.LoadData().subscribe(
+      data => {
+        this.DataArray = data;
+        console.log(data);
+      }
+    );
   }
 
-  getAllPhotos() {
-    this.httpClient.get(`https://jsonplaceholder.typicode.com/photos`) // queries the URL by ID, the base address for api
-      .subscribe( // it subscribes to the URL, keeps watching it until it gets it and executes it
-        (data: any[]) => { // retrieves the object we call data from inside the URL
-          if (data.length) { // if it returns some data
-            this.allPhotos = data;
-            this.photos = this.allPhotos.filter((x, i) => i < 50);
-          }
-        }
-      );
-  }
+  // onNameKeyUp(event: any) {
+  //   this.id = event.target.value;
+  //   console.log(event.target.value);
+  //   this.found = true; // data will be false whilst typing
+  // }
 
-  changeLimit(limit) {
-    this.photos = this.allPhotos;
-    this.limit = limit;
-  }
+  // // Http Get Method
+  // getPhotos() {
+  //   // this is where it is going to do the Http GET
+  //   this.httpClient.get(`https://jsonplaceholder.typicode.com/photos/?id=${this.id}`) // queries the URL by ID, the base address for api
 
-  ngOnInit() {
-    this.getAllPhotos();
-  }
+  //     .subscribe( // it subscribes to the URL, keeps watching it until it gets it and executes it
+  //       (data: any[]) => { // retrieves the object we call data from inside the URL
+  //         console.log(data);
+  //         if (data.length) { // if it returns some data
+  //           this.photos = data;
+  //         }
+  //       }
+  //     );
+  // }
+
+  // getAllPhotos() {
+  //   this.httpClient.get(`https://jsonplaceholder.typicode.com/photos`) // queries the URL by ID, the base address for api
+  //     .subscribe( // it subscribes to the URL, keeps watching it until it gets it and executes it
+  //       (data: any[]) => { // retrieves the object we call data from inside the URL
+  //         if (data.length) { // if it returns some data
+  //           this.allPhotos = data;
+  //           this.photos = this.allPhotos.filter((x, i) => i < 50);
+  //         }
+  //       }
+  //     );
+  // }
+
+  // changeLimit(limit) {
+  //   this.photos = this.allPhotos;
+  //   this.limit = limit;
+  // }
+
+  // ngOnInit() {
+  //   this.getAllPhotos();
+  // }
+
+
 
 }
