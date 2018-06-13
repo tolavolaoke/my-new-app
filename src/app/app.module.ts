@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http'; //imports the Http Client which prepares the setup for the API
-import { DataService } from './services/data.service';
+
+
 
 
 
@@ -18,7 +19,7 @@ import { DataService } from './services/data.service';
     HttpClientModule //added in the NgModule declarations as a property
 
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,19 +19,22 @@
 </h1>
 
 <!--To build the user interface.-->
-<!-- <input type="text" (keyup)="onNameKeyUp($event)"> -->
+<input type="text" (keyup)="onNameKeyUp($event)">
 <!--Event is the input element, Keyup means whenever I am typing it will do something-->
-<!-- <button (click)="getPhotos()">Get Profile</button> -->
+<button (click)="getPhotos()">Get Profile</button>
 <!--Implement the getProfile in component.ts -->
 
-<!-- <div class="optionButtons">
+<div class="optionButtons">
 <button (click)="changeLimit(5000)">Get All</button>
 <button (click)="changeLimit(50)">Limit 50</button>
 <button (click)="changeLimit(100)">Limit 100</button>
 <button (click)="changeLimit(1000)">Limit 1000</button>
-</div> -->
+<button (click)="nextPage()">Next</button>
+<button (click)="previousPage()">Previous</button>
+</div> 
 
-<!-- <table>
+
+ <table>
   <tr>
     <th>ID</th>
     <th>Album</th>
@@ -39,7 +42,7 @@
     <th>Url</th>
     <th>ThumbnailUrl</th>
   </tr>
-  <tr *ngFor="let photo of photos | slice:0:limit">
+  <tr *ngFor="let photo of photos | slice:sliceValueMin:sliceValueMax">
     <td>{{ photo.id }}</td>
     <td>{{ photo.albumId }}</td>
     <td>{{ photo.title }}</td>
@@ -50,28 +53,7 @@
       <img height="40" src="{{photo.url}}" />
     </td>
   </tr>
-</table>  -->
-
-
-<table id="myTable"> 
-  <thead>
-    <th>ID</th>
-    <th>Album</th>
-    <th>Title</th>
-    <th>Url</th>
-    <th>ThumbnailUrl</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-
+</table>  
 
 </body>
 </html>
