@@ -9,7 +9,6 @@ import { HttpClientModule} from '@angular/common/http'; //imports the Http Clien
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent
